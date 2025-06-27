@@ -110,5 +110,5 @@ export const {
   useLoadUserQuery,
   useUpdateUserMutation,
   useBecomeSellerMutation
-} = authApi;
+} 
  
