@@ -5,7 +5,7 @@ import { HiMenuAlt3 } from "react-icons/hi";
 import { Link, useNavigate } from 'react-router-dom';
 import { MdOutlinePersonAddAlt, MdOutlineBusinessCenter } from "react-icons/md";
 import { useDispatch, useSelector } from 'react-redux';
-import Search from './search';
+import Search from './Search';
 import { useLogoutUserMutation } from '@/features/auth/authApi';
 import { userLogout } from "@/redux/slices/AuthSlice";
 
