@@ -37,7 +37,7 @@ const Search = () => {
 
   return (
     <div className="w-full max-w-xl mx-auto mt-4 relative"> {/* Added relative positioning for container */}
-      {/* 🔍 Search bar */}
+      {/*  Search bar */}
       <div className="flex items-center bg-white border border-gray-400 rounded-md overflow-hidden shadow-sm">
         <input
           type="text"
@@ -57,7 +57,7 @@ const Search = () => {
         </button>
       </div>
 
-      {/* 🔽 Suggestions Dropdown */}
+      {/*  Suggestions Dropdown */}
       {!showResults && filteredProducts.length > 0 && (
         <div className="bg-black border border-gray-700 rounded mt-1 shadow-md max-h-60 overflow-y-auto z-10 absolute w-full text-left"> {/* Align text to left */}
           {filteredProducts.map((product) => (
@@ -95,7 +95,7 @@ const Search = () => {
         </div>
       )}
 
-      {/* 🔄 Loading / Error */}
+      {/* Loading / Error */}
       {isLoading && <p className="text-blue-500 mt-2">Loading...</p>}
       {error && <p className="text-red-500 mt-2">Error fetching data.</p>}
     </div>

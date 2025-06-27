@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const wishlistApi = createApi({
   reducerPath: "wishlistApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8080/api/v1/wishlist",
+    baseUrl: import.meta.env.VITE_WISH_URL,
     credentials: "include",
   }),
   tagTypes: ["Wishlist"],
@@ -16,7 +16,7 @@ export const wishlistApi = createApi({
     addToWishlist: builder.mutation({
       query: (productId) => ({
         url: "/add",
-        method: "POST",
+        method: "POST", 
         body: { productId },
       }),
       invalidatesTags: ["Wishlist"],
@@ -38,3 +38,4 @@ export const {
   useAddToWishlistMutation,
   useRemoveFromWishlistMutation,
 } = wishlistApi;
+ 

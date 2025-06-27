@@ -50,7 +50,7 @@ const BecomeSeller = () => {
     try {
       await becomeSeller().unwrap();
       await refetch();
-      alert("🎉 Congratulations! You are now a seller.");
+      alert(" Congratulations! You are now a seller.");
     } catch (err) {
       console.error(err);
       alert(err?.data?.message || "Something went wrong");

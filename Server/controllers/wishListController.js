@@ -38,7 +38,7 @@ export const addToWishlist = async (req, res) => {
   }
 };
 
-/** ✅ Remove from Wishlist */
+/**  Remove from Wishlist */
 export const removeFromWishlist = async (req, res) => {
   try {
     if (!req.user.userId) {
@@ -70,7 +70,7 @@ export const removeFromWishlist = async (req, res) => {
   }
 };
 
-/** ✅ Get Wishlist */
+/* Get Wishlist */
 export const getWishlist = async (req, res) => {
   try {
     if (!req.user.userId) {

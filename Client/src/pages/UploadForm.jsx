@@ -47,8 +47,9 @@ const UploadForm = () => {
       const response = await createProduct(productData).unwrap();
       console.log("Product created:", response);
       alert("Product created successfully!");
+      
 
-      // ✅ Reset form fields after success
+      //  Reset form fields after success
       setFormData({
         name: "",
         stock: "",
@@ -57,8 +58,8 @@ const UploadForm = () => {
         description: "",
         photo: null,
       });
-      // Optional: reset file input
-      document.getElementById("photoInput").value = "";
+    
+          navigate("/");
     } catch (error) {
       console.error("Upload failed:", error);
       alert("Only seller can upload their product!");

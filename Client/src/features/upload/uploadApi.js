@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const uploadApi = createApi({
   reducerPath: "uploadApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080/api/v1/upload",
+  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_UPLOAD_URL,
     credentials:"include"
    }),
   endpoints: (builder) => ({
@@ -16,4 +16,5 @@ export const uploadApi = createApi({
   }),
 });
 
-export const { useUploadImageMutation } = uploadApi;
+export const { useUploadImageMutation } = uploadApi; 
+ 

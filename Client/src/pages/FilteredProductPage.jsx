@@ -1,10 +1,11 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom'; // ✅ Import useNavigate
 import { useGetFilteredProductsQuery } from '@/features/product/productApi'
+import { IoArrowBack } from 'react-icons/io5';
 
 const FilteredProductsPage = () => {
   const { category } = useParams();
-  const navigate = useNavigate(); // ✅ Initialize navigate
+  const navigate = useNavigate(); //  Initialize navigate
 
   const { data, isLoading, error } = useGetFilteredProductsQuery({ category });
 
@@ -13,6 +14,11 @@ const FilteredProductsPage = () => {
 
   return (
     <div className="p-6">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
+              <button onClick={() => navigate("/")}>
+                <IoArrowBack className="text-2xl text-gray-500" />
+              </button>
+              </h2>
       <h2 className="text-2xl font-semibold mb-4">Category: {category}</h2>
       {data?.products?.length === 0 ? (
         <p>No products found in this category.</p>
@@ -22,7 +28,7 @@ const FilteredProductsPage = () => {
             <div
               key={product._id}
               className="border p-4 rounded shadow cursor-pointer hover:shadow-lg transition"
-              onClick={() => navigate(`/product/${product._id}`)} // ✅ Navigate on click
+              onClick={() => navigate(`/product/${product._id}`)} //  Navigate on click
             >
               <img
                 src={product.photo}

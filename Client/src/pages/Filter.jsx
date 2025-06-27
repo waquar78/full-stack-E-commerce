@@ -20,21 +20,42 @@ const Filter = () => {
   };
 
   return (
-    <div className='w-full py-3 text-black flex items-center justify-evenly bg-gray-200 overflow-x-auto'>
-      {categories.map((cat, index) => (
-        <div
-          key={index}
-          onClick={() => handleCategoryClick(cat)}
-          className="flex flex-col items-center cursor-pointer hover:text-blue-600 min-w-[60px]"
-        >
-          <img
-            src={categoryImages[cat]}
-            alt={cat}
-            className="w-16 h-16 rounded-full object-cover mb-1"  // Increased icon size
-          />
-          <h1 className="text-xs font-bold capitalize text-center">{cat}</h1>  {/* Bold text */}
-        </div>
-      ))}
+    <div className='w-full py-3 text-black bg-gray-200'>
+      {/* Mobile Scrollable */}
+      <div className="flex md:hidden items-center gap-5 px-3 overflow-x-auto scrollbar-hide">
+        {categories.map((cat, index) => (
+          <div
+            key={index}
+            onClick={() => handleCategoryClick(cat)}
+            className="flex flex-col items-center cursor-pointer hover:text-blue-600 min-w-[60px]"
+          >
+            <img
+              src={categoryImages[cat]}
+              alt={cat}
+              className="w-14 h-14 rounded-full object-cover mb-1"
+            />
+            <h1 className="text-[10px] font-bold capitalize text-center">{cat}</h1>
+          </div>
+        ))}
+      </div>
+
+      {/* Large screen evenly spaced */}
+      <div className="hidden md:flex items-center justify-evenly gap-5 px-3">
+        {categories.map((cat, index) => (
+          <div
+            key={index}
+            onClick={() => handleCategoryClick(cat)}
+            className="flex flex-col items-center cursor-pointer hover:text-blue-600"
+          >
+            <img
+              src={categoryImages[cat]}
+              alt={cat}
+              className="w-16 h-16 rounded-full object-cover mb-1"
+            />
+            <h1 className="text-xs font-bold capitalize text-center">{cat}</h1>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

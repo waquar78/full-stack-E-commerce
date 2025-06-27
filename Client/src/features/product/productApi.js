@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const productApi = createApi({
   reducerPath: 'productApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:8080/api/v1/product',
+    baseUrl: import.meta.env.VITE_PRODUCT_URL,
     credentials: 'include', // for cookies (JWT)
   }),
   tagTypes: ['Product'],
@@ -53,7 +53,7 @@ export const productApi = createApi({
         method: 'DELETE',
       }),
       invalidatesTags: ['Product'],
-    }),
+    }), 
 
     // ========================= GET FILTERED PRODUCTS =========================
     getFilteredProducts: builder.query({
@@ -62,7 +62,7 @@ export const productApi = createApi({
         let url = `/filtered?`;
         if (keyword) url += `keyword=${keyword}&`;
         if (category) url += `category=${category}&`;
-        if (minPrice) url += `minPrice=${minPrice}&`;
+        if (minPrice) url += `minPrice=${minPrice}&`; 
         if (maxPrice) url += `maxPrice=${maxPrice}&`;
         if (page) url += `page=${page}&`;
         if (limit) url += `limit=${limit}&`;

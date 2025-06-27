@@ -4,20 +4,20 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const cartApi = createApi({
   reducerPath: "cartApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8080/api/v1/cart",
+    baseUrl: import.meta.env.VITE_CART_URL,
     credentials: "include",
   }),
   tagTypes: ["Cart"],
   endpoints: (builder) => ({
 
     getCart: builder.query({
-      query: () => "/my-cart",  // ✅ as per backend
-      providesTags: ["Cart"],
+      query: () => "/my-cart", 
+      providesTags: ["Cart"], 
     }),
 
     addToCart: builder.mutation({
       query: (data) => ({
-        url: "/addToCart",       // ✅ match backend
+        url: "/addToCart",       
         method: "POST",
         body: data,
       }),
@@ -26,7 +26,7 @@ export const cartApi = createApi({
 
     removeFromCart: builder.mutation({
       query: (data) => ({
-        url: "/removeFromCart",   // ✅ match backend
+        url: "/removeFromCart",   
         method: "DELETE",
         body: data,
       }),
@@ -35,7 +35,7 @@ export const cartApi = createApi({
 
     updateCartQuantity: builder.mutation({
       query: (data) => ({
-        url: "/updateQuantity",  // ✅ match backend
+        url: "/updateQuantity",  
         method: "PUT",
         body: data,
       }),
@@ -44,16 +44,16 @@ export const cartApi = createApi({
 
     emptyCart: builder.mutation({
       query: () => ({
-        url: "/empty",          // ✅ match backend
+        url: "/empty",          
         method: "DELETE",
       }),
       invalidatesTags: ["Cart"],
     }),
 
-    // Optional: agar tum checkout feature implement karoge
+    
     checkout: builder.mutation({
       query: () => ({
-        url: "/checkout",      // ✅ only if you create this route in backend
+        url: "/checkout",      
         method: "POST",
       }),
       invalidatesTags: ["Cart"],
@@ -70,3 +70,4 @@ export const {
   useEmptyCartMutation,
   useCheckoutMutation,
 } = cartApi;
+ 

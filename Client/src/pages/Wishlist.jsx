@@ -31,7 +31,7 @@ const WishlistPage = () => {
     <div>
       <Header />
       
-      <div className="ml-4 mt-8">
+      <div className="ml-4 mt-16">
         <div
           className="relative group text-2xl text-gray-700 hover:text-black transition-all duration-300"
           onClick={() => navigate("/")}

@@ -1,6 +1,6 @@
 import React from 'react'
 import BecomeSeller from './BecomeSeller'
-import UploadForm from './UploadForm' // agar ye component bana hai
+import UploadForm from './UploadForm' 
 import { useLoadUserQuery } from '@/features/auth/authApi';
 import SellerDashboard from './SellerDashboard';
 

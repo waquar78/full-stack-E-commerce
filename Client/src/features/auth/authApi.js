@@ -1,8 +1,8 @@
-// ✅ UPDATED authApi.js
+//  UPDATED authApi.js
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { setUser, userLogout } from '@/redux/slices/AuthSlice';
 
-const USER_API = "http://localhost:8080/api/v1/user/";
+const USER_API = import.meta.env.VITE_AUTH_URL;
 
 export const authApi = createApi({
   reducerPath: "authApi",
@@ -10,8 +10,8 @@ export const authApi = createApi({
     baseUrl: USER_API,
     credentials: 'include',
   }),
-  tagTypes: ['User'], // 👈 Add tagTypes
-  endpoints: (builder) => ({
+  tagTypes: ['User'], // Add tagTypes
+  endpoints: (builder) => ({ 
 
     registerUser: builder.mutation({
       query: (inputData) => ({
@@ -65,7 +65,7 @@ export const authApi = createApi({
         url: "profile",
         method: "GET"
       }),
-      providesTags: ['User'], // 👈 Provide tag to allow invalidation
+      providesTags: ['User'], //  Provide tag to allow invalidation
       async onQueryStarted(_, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;
@@ -89,7 +89,7 @@ export const authApi = createApi({
         url: '/seller',
         method: 'POST',
       }),
-      invalidatesTags: ['User'], // 👈 Invalidate user to trigger refetch
+      invalidatesTags: ['User'], //  Invalidate user to trigger refetch
       async onQueryStarted(_, { queryFulfilled, dispatch }) {
         try {
           await queryFulfilled;
@@ -111,3 +111,4 @@ export const {
   useUpdateUserMutation,
   useBecomeSellerMutation
 } = authApi;
+ 

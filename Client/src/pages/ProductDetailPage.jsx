@@ -42,13 +42,14 @@ const ProductDetailPage = () => {
   const product = data.product;
 
   return (
-    <div className="h-screen w-screen mt-6 overflow-x-hidden bg-gradient-to-r from-gray-100 to-blue-100 flex flex-col overflow-hidden">
+    <div className="min-h-screen w-full overflow-x-hidden bg-gradient-to-r from-gray-100 to-blue-100 flex flex-col">
       <Header />
 
       {/* Back Button */}
-      <div className="px-6 pt-4">
+    
+    <div className="px-4 pt-20 md:pt-20">
         <button
-          className="text-2xl text-gray-600 hover:text-gray-800 transition flex items-center gap-1"
+          className="text-xl md:text-2xl text-gray-600 hover:text-gray-800 transition flex items-center gap-1"
           onClick={() => navigate("/")}
         >
           <IoArrowBack />
@@ -56,44 +57,49 @@ const ProductDetailPage = () => {
         </button>
       </div>
 
+
       {/* Product Section */}
-      <div className="flex-grow flex items-center justify-center overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center gap-10">
+      <div className="flex-grow flex items-center justify-center">
+        <div className="max-w-7xl w-full mx-auto px-4 md:px-6 py-8 flex flex-col md:flex-row items-center gap-8 md:gap-10 overflow-hidden">
+
           {/* Image Section */}
-          <div className="bg-white rounded-2xl shadow-xl p-6 w-full md:w-[40%] flex justify-center items-center">
+          <div className="bg-white rounded-2xl shadow-xl p-4 md:p-6 w-full md:w-[40%] flex justify-center items-center">
             <img
               src={product.photo}
               alt={product.name}
-              className="w-full h-[300px] object-contain rounded-xl"
+              className="w-full h-[250px] md:h-[300px] object-contain rounded-xl"
             />
           </div>
 
           {/* Product Details */}
-          <div className="flex-1 space-y-4 text-gray-800">
-            <h1 className="text-4xl font-bold">{product.name}</h1>
-            <p className="text-base text-gray-600">{product.description}</p>
-            <div className="text-3xl font-extrabold text-green-600">₹{product.price}</div>
+          <div className="flex-1 space-y-4 text-gray-800 overflow-hidden">
+            <h1 className="text-2xl md:text-4xl font-bold">{product.name}</h1>
+            <p className="text-sm md:text-base text-gray-600">{product.description}</p>
+            <div className="text-2xl md:text-3xl font-extrabold text-green-600">₹{product.price}</div>
 
-            <div className="space-y-1 text-sm text-gray-700 pt-4">
+            <div className="space-y-1 text-sm md:text-base text-gray-700 pt-3">
               <p><span className="font-semibold">Stock:</span> {product.stock > 0 ? product.stock : 'Out of Stock'}</p>
               <p><span className="font-semibold">Category:</span> {product.category}</p>
               <p><span className="font-semibold">Seller ID:</span> {product.sellerId}</p>
             </div>
 
-            <div className="flex gap-4 pt-6">
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-6">
               <button
                 onClick={handleAddToCart}
-                className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition items-center ml-60"
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition text-sm md:text-base"
               >
                 Add to Cart
               </button>
-              <button className="bg-white border border-gray-400 text-gray-800 px-6 py-2 rounded-lg shadow-sm hover:bg-gray-100 transition"
-                onClick={()=>{
-                  navigate("/payment")
-                }}>
+
+              <button
+                className="bg-white border border-gray-400 text-gray-800 px-4 py-2 rounded shadow-sm hover:bg-gray-100 transition text-sm md:text-base"
+                onClick={() => navigate("/payment")}
+              >
                 Buy Now
               </button>
             </div>
+
           </div>
         </div>
       </div>

@@ -22,6 +22,8 @@ const CartPage = () => {
   const [emptyCart] = useEmptyCartMutation();
   const [checkout] = useCheckoutMutation();
 
+ 
+
   if (isLoading)
     return <p className="text-center text-lg">Loading Cart...</p>;
 
@@ -29,7 +31,7 @@ const CartPage = () => {
     console.error("Cart fetch error:", error);
     return (
       <p className="text-center text-red-500">
-        Error loading cart. Please refresh.
+       please add the item into the cart
       </p>
     );
   }
@@ -40,7 +42,7 @@ const CartPage = () => {
       : { products: [], totalPrice: 0 };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8">
+    <div className="max-w-5xl mx-auto px-4 py-16">
       <Header />
 
       <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">

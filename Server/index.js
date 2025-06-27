@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser()) ;
 
 app.use(cors({
-    origin:"  http://localhost:5173",
+  origin: process.env.FRONTEND_URL,
     credentials:true
 }));
 
@@ -30,7 +30,7 @@ app.use("/api/v1/upload",uploadRoute);
 app.use("/api/v1/cart",cartRoute);
 app.use("/api/v1/wishlist",wishlistRoute);
 app.use("/api/v1/order",orderRoute)
-app.listen(PORT,(req,res)=>{
+app.listen(PORT,( )=>{
     console.log(`app is listening at ${PORT}`)
    
 })
